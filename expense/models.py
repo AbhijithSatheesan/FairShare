@@ -54,6 +54,8 @@ class Expense(models.Model):
         return f"{self.description} --> Rs:{self.amount}"
 
 
+# If we use a seperate table for payments, later we can accept unequal share for expenses and calculate the total spendings
+# --- of the group and settle amounts
 
 class ExpensePayment(models.Model):
     expense = models.ForeignKey(Expense, on_delete= models.CASCADE, related_name='payments')
