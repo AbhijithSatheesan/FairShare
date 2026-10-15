@@ -129,4 +129,15 @@ All seven tests passed inside Docker during development.
 - Historical shares are not stored separately, so membership changes can affect balance calculations for earlier expenses.
 - SQLite is used for simple local development.
 
-Possible future improvements include unequal splits, expense settlements, and PostgreSQL support.
+
+## Architecture and Design Decisions
+
+The application uses Django REST Framework to expose API endpoints, serializers to validate incoming data, and Django models to manage database operations. SQLite is used as the default database.
+
+Expenses are split equally among the group's current members. Balances are calculated when requested rather than storing a separate share for every member. This keeps the implementation simple, though changes to group membership can affect historical balance calculations.
+
+## Improvements with More Time
+
+- Support unequal expense splits and settlement tracking.
+- Add options to track the whole expenses of group and calculate the users contributions so settlement will be easy.
+- Support PostgreSQL for production deployment.
