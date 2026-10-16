@@ -45,7 +45,7 @@ class Expense(models.Model):
         ("other", "Other"),
     ]
     group = models.ForeignKey(Group, on_delete= models.CASCADE, related_name= 'expense_group')
-    amount = models.DecimalField(max_digits= 6, decimal_places= 2)
+    amount = models.DecimalField(max_digits= 10, decimal_places= 2)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add= True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="other")
@@ -60,7 +60,7 @@ class Expense(models.Model):
 class ExpensePayment(models.Model):
     expense = models.ForeignKey(Expense, on_delete= models.CASCADE, related_name='payments')
     member = models.ForeignKey(GroupMembership, on_delete= models.PROTECT, related_name='payments')
-    amount_paid = models.DecimalField(max_digits=6, decimal_places= 2)
+    amount_paid = models.DecimalField(max_digits=10, decimal_places= 2)
 
     def __str__(self):
         return f"{self.expense.description} - {self.member} Amount paid: {self.amount_paid}"

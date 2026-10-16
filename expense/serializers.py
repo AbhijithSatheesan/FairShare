@@ -88,7 +88,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     paid_by_name = serializers.SerializerMethodField()
 
     amount = serializers.DecimalField(
-        max_digits=6,
+        max_digits=10,
         decimal_places=2,
         min_value=Decimal("0.01")
     )
